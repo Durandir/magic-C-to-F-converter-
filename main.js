@@ -1,25 +1,19 @@
-const converter = document.querySelector('#converter')
+const temperatureField = document.querySelector('#temperatureField')
 const result = document.querySelector('.result')
-const convBtn = document.querySelector('.conv')
-const one = document.querySelector('.one')
+const convertBtn = document.querySelector('.conv')
 
-let fahrenhait
-let celsius
 
-const fahrCel = () => {
-	fahrenhait = converter.value * 1.8 + 32
-	result.textContent = `${converter.value}°C is ${fahrenhait.toFixed(1)}°F`
-	converter.value = ''
+const fahrtoCel = () => {
+	const fahrenhait = temperatureField.value * 1.8 + 32 
+	result.textContent = `${temperatureField.value}°C is ${fahrenhait.toFixed(1)}°F`
+	temperatureField.value = ''
 }
 
 const conversion = () => {
-	if (converter.value !== '') {
-		if (one.textContent === '°C') {
-			fahrCel()
-		}
-	} else {
-		result.textContent = 'you must enter a number!'
+	if (temperatureField.value === '') {
+		return (result.textContent = 'you must enter a number!')
 	}
+	return fahrtoCel()
 }
 
 const reset = () => {
@@ -27,5 +21,6 @@ const reset = () => {
 	result.textContent = ''
 }
 
-convBtn.addEventListener('click', conversion)
 
+
+convertBtn.addEventListener('click', conversion)
